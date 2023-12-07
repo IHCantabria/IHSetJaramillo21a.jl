@@ -1,0 +1,18 @@
+name = "IHSetJaramillo21"
+uuid = "ea2a7c3a-4b86-489c-bc58-db87253871aa"
+authors = ["defreitasL <lucas12.fp@hotmail.com> and contributors"]
+version = "1.0.0-DEV"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
