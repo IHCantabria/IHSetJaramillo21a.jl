@@ -77,6 +77,8 @@ function run_Jaramillo2021()
     α_t = Jaramillo21(P, θ_w, α_0, dt, a, b, cacr, cero)
 
     println("\n\n****************Finished****************\n\n")
+
+    return α_t
     
 end
     
