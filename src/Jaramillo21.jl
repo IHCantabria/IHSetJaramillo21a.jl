@@ -729,11 +729,11 @@ function cal_Jaramillo21()
                     "len", 1,
                     atts = RP_atts)
         ncwrite([aRP], output, "RP")
-        nccreate(output, "RMS",
+        nccreate(output, "RMSE",
                     "len", 1,
                     atts = RMSE_atts)
         ncwrite([aRMSE], output, "RMSE")
-        nccreate(output, "MSS=",
+        nccreate(output, "MSS",
                     "len", 1,
                     atts = MSS_atts)
         ncwrite([aMSS], output, "MSS")
