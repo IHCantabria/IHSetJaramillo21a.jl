@@ -384,6 +384,8 @@ function cal_Jaramillo21a()
         println(P[end-10:end])
         println("Tail θ:")
         println(θ_b[end-10:end])
+        println("Tail Ymdr:")
+        println(Ymdr[end-10:end])
 
         year_atts = Dict("long_name" => "Year")
         month_atts = Dict("long_name" => "Month")
