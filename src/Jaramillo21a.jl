@@ -28,7 +28,7 @@ function Jaramillo21a(P, dt, a, b, Lcw, Lccw, α0)
         end
     end
     
-    return Y
+    return α
 end
 
 
