@@ -202,13 +202,6 @@ function cal_Jaramillo21a()
 
         println("\n\n****************Finished****************\n\n")
 
-        println("Tail P:")
-        println(P[end-10:end])
-        println("Tail θ:")
-        println(θ_b[end-10:end])
-        println("Tail Ymdr:")
-        println(Ymdr[end-10:end])
-
         year_atts = Dict("long_name" => "Year")
         month_atts = Dict("long_name" => "Month")
         day_atts = Dict("long_name" => "Day")
@@ -381,13 +374,6 @@ function cal_Jaramillo21a()
         aMSS = 1 - sum((Ysl .- Y_obs).^2)/length(Ysl)/(var(Ysl)+var(Y_obs)+(mean(Ysl)-mean(Y_obs))^2)
 
         println("\n\n****************Writing output****************\n\n")
-
-        println("Tail P:")
-        println(P[end-10:end])
-        println("Tail θ:")
-        println(θ_b[end-10:end])
-        println("Tail Ymdr:")
-        println(Ymdr[end-10:end])
 
         year_atts = Dict("long_name" => "Year")
         month_atts = Dict("long_name" => "Month")
