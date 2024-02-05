@@ -119,7 +119,7 @@ function cal_Jaramillo21a()
 
     if calPar == 4
         function Calibra_4r(Χ)
-            Ymd = Jaramillo21a(P, dt, -exp(Χ[1]), exp(Χ[2]), -exp(Χ[3]), -exp(Χ[4]), Y_obs[1])
+            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], -exp(Χ[3]), -exp(Χ[4]), Y_obs[1])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
@@ -141,10 +141,10 @@ function cal_Jaramillo21a()
         end
 
         
-        boundsr = [(log(1e-3), log(5e-1)),
-                    (log(1e-1), log(1e+2)),
-                    (log(1e-5), log(1e-1)),
-                    (log(1e-5), log(1e-1))]
+        boundsr = [(-1e+2, 1e+2),
+                   (-1e+3, 1e+3),
+                   (log(1e-12), log(1e-6)),
+                   (log(1e-12), log(1e-6))]
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
             resr = bboptimize(Calibra_4r; 
@@ -293,7 +293,7 @@ function cal_Jaramillo21a()
 
     elseif calPar == 5
         function Calibra_5r(Χ)
-            Ymd = Jaramillo21a(P, dt, -exp(Χ[1]), exp(Χ[2]), -exp(Χ[3]), -exp(Χ[4]), Χ[5])
+            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], -exp(Χ[3]), -exp(Χ[4]), Χ[5])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
@@ -314,11 +314,11 @@ function cal_Jaramillo21a()
             end
         end
 
-        boundsr = [(log(1e-3), log(5e-1)),
-                    (log(1e-1), log(1e+2)),
-                    (log(1e-5), log(1e-1)),
-                    (log(1e-5), log(1e-1)),
-                    (0.25*minimum(Y_obs), 2*maximum(Y_obs))]
+        boundsr = [(-1e+2, 1e+2),
+                   (-1e+3, 1e+3),
+                   (log(1e-12), log(1e-6)),
+                   (log(1e-12), log(1e-6)),
+                   (0.25*minimum(Y_obs), 2*maximum(Y_obs))]
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
             resr = bboptimize(Calibra_5r; 
