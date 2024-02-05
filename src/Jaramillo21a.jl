@@ -12,9 +12,9 @@
 #######################################
 """
 
-function Jaramillo21a(P, dt, a, b, Lcw, Lccw, α0)
+function Jaramillo21a(P, θ,dt, a, b, Lcw, Lccw, α0)
     
-    αeq = (P .- b) ./ a
+    αeq = ( θ .- b) ./ a
     
     α = zeros(length(P))
     
@@ -94,7 +94,7 @@ function cal_Jaramillo21a()
 
     ii =  t_wav .<= t_obs[end] .&& t_wav .>= t_obs[1]
 
-    t_wav, hb, tp, hs, depthb = t_wav[ii], Hb[ii], Tp[ii], Hs[ii], depthb[ii]
+    t_wav, hb, tp, hs, depthb, θ_b = t_wav[ii], Hb[ii], Tp[ii], Hs[ii], depthb[ii], θ_b[ii]
 
     idx_obs = zeros(length(t_obs))
 
@@ -119,7 +119,7 @@ function cal_Jaramillo21a()
 
     if calPar == 4
         function Calibra_4r(Χ)
-            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Y_obs[1])
+            Ymd = Jaramillo21a(P, θ_b,dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Y_obs[1])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
@@ -156,8 +156,8 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -170,8 +170,8 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000,
                             Method=:borg_moea)
         else
@@ -183,15 +183,15 @@ function cal_Jaramillo21a()
                             MaxSteps = 50000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000)
         end
 
         objr = best_fitness(resr)
         popr = best_candidate(resr)
 
-        Ymdr = Jaramillo21a(P, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), Y_obs[1])
+        Ymdr = Jaramillo21a(P, θ_b, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), Y_obs[1])
 
         Ysl = Ymdr[idx_obs]
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
@@ -293,7 +293,7 @@ function cal_Jaramillo21a()
 
     elseif calPar == 5
         function Calibra_5r(Χ)
-            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Χ[5])
+            Ymd = Jaramillo21a(P, θ_b, dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Χ[5])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
@@ -330,8 +330,8 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -344,8 +344,8 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000,
                             Method=:borg_moea)
         else
@@ -357,15 +357,15 @@ function cal_Jaramillo21a()
                             MaxSteps = 50000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.1,
-                            τ = 0.05,
+                            ϵ=0.01,
+                            τ = 0.005,
                             MaxStepsWithoutEpsProgress = 100000)
         end
 
         objr = best_fitness(resr)
         popr = best_candidate(resr)
 
-        Ymdr = Jaramillo21(P, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), popr[5])
+        Ymdr = Jaramillo21(P, θ_b, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), popr[5])
 
         Ysl = Ymdr[idx_obs]
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
