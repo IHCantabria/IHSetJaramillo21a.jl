@@ -22,9 +22,9 @@ function Jaramillo21a(P, dt, a, b, Lcw, Lccw, α0)
 
     for i in eachindex(P[2:end])
         if α[i] < αeq[i+1]
-            Y[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * a *Lcw *(P[i+1])*dt))+αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * a *Lcw *(P[i+1])*dt))+αeq[i+1]
         else
-            Y[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * a *Lccw *(P[i+1])*dt))+αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * a *Lccw *(P[i+1])*dt))+αeq[i+1]
         end
     end
     
