@@ -22,9 +22,9 @@ function Jaramillo21a(P, θ,dt, a, b, Lcw, Lccw, α0)
 
     for i in eachindex(P[2:end])
         if α[i] < αeq[i+1]
-            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lcw * (P[i+1])*dt)) + αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lcw * (P[i+1])*dt*3600)) + αeq[i+1]
         else
-            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lccw * (P[i+1])*dt)) + αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lccw * (P[i+1])*dt*3600)) + αeq[i+1]
         end
     end
     
@@ -107,6 +107,7 @@ function cal_Jaramillo21a()
     ########## START HERE #############
 
     P = hb .^ 2 .* tp
+
 
     println("Starting Jaramillo et al. (2021) - Shoreline Evolution Model...")
 
