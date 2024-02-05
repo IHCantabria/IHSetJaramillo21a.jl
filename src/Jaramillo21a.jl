@@ -156,7 +156,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000,
                             Method=:borg_moea)
@@ -170,7 +170,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000,
                             Method=:borg_moea)
@@ -183,7 +183,7 @@ function cal_Jaramillo21a()
                             MaxSteps = 5000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000)
         end
@@ -191,7 +191,7 @@ function cal_Jaramillo21a()
         objr = best_fitness(resr)
         popr = best_candidate(resr)
 
-        Ymdr = Jaramillo21a(P, dt, -exp(popr[1]), exp(popr[2]), -exp(popr[3]), -exp(popr[4]), Y_obs[1])
+        Ymdr = Jaramillo21a(P, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), Y_obs[1])
 
         Ysl = Ymdr[idx_obs]
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
@@ -265,11 +265,11 @@ function cal_Jaramillo21a()
         nccreate(output, "a",
                     "len", 1,
                     atts = a_atts)
-        ncwrite([exp(popr[1])], output, "a")
+        ncwrite([popr[1]], output, "a")
         nccreate(output, "b",
                     "len", 1,
                     atts = b_atts)
-        ncwrite([exp(popr[2])], output, "b")
+        ncwrite([popr[2]], output, "b")
         nccreate(output, "Lcw",
                     "len", 1,
                     atts = Lcw_atts)
@@ -330,7 +330,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000,
                             Method=:borg_moea)
@@ -344,7 +344,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000,
                             Method=:borg_moea)
@@ -357,7 +357,7 @@ function cal_Jaramillo21a()
                             MaxSteps = 5000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.1,
+                            ϵ=0.01,
                             τ = 0.05,
                             MaxStepsWithoutEpsProgress = 10000)
         end
@@ -365,7 +365,7 @@ function cal_Jaramillo21a()
         objr = best_fitness(resr)
         popr = best_candidate(resr)
 
-        Ymdr = Jaramillo21(P, dt, -exp(popr[1]), exp(popr[2]), -exp(popr[3]), -exp(popr[4]), popr[5])
+        Ymdr = Jaramillo21(P, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), popr[5])
 
         Ysl = Ymdr[idx_obs]
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
@@ -437,11 +437,11 @@ function cal_Jaramillo21a()
         nccreate(output, "a",
                     "len", 1,
                     atts = a_atts)
-        ncwrite([exp(popr[1])], output, "a")
+        ncwrite([popr[1]], output, "a")
         nccreate(output, "b",
                     "len", 1,
                     atts = b_atts)
-        ncwrite([exp(popr[2])], output, "b")
+        ncwrite([popr[2]], output, "b")
         nccreate(output, "Lcw",
                     "len", 1,
                     atts = Lcw_atts)
