@@ -106,7 +106,7 @@ function cal_Jaramillo21a()
 
     ########## START HERE #############
 
-    P = Hb .^ 2 .* Tp
+    P = hb .^ 2 .* tp
 
     println("Starting Jaramillo et al. (2021) - Shoreline Evolution Model...")
 
