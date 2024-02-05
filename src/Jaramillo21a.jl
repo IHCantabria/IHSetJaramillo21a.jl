@@ -119,7 +119,7 @@ function cal_Jaramillo21a()
 
     if calPar == 4
         function Calibra_4r(Χ)
-            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], -exp(Χ[3]), -exp(Χ[4]), Y_obs[1])
+            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Y_obs[1])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
@@ -293,7 +293,7 @@ function cal_Jaramillo21a()
 
     elseif calPar == 5
         function Calibra_5r(Χ)
-            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], -exp(Χ[3]), -exp(Χ[4]), Χ[5])
+            Ymd = Jaramillo21a(P, dt, Χ[1], Χ[2], exp(Χ[3]), exp(Χ[4]), Χ[5])
             YYsl = Ymd[idx_obs]
             if MetObj == "Pearson"
                 return 1 -  abs(sum((YYsl.-mean(YYsl)).*(Y_obs .- mean(Y_obs)))/(std(YYsl)*std(Y_obs)*length(YYsl)))
