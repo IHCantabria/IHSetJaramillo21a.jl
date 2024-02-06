@@ -79,7 +79,7 @@ function cal_Jaramillo21a()
         Hb, Tp, Hs, depthb = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Hs")
         depthb .= zeros(length(Hb)) .+ depth
     else
-        Hb, Tp, Hs, depthb = ncread(wavF, "Hb"), ncread(wavF, "Tp"), ncread(wavF, "Hs"), ncread(wavF, "hb")
+        Hb, θ_b, Hs, depthb = ncread(wavF, "Hb"), ncread(wavF, "Tp"), ncread(wavF, "Hs"), ncread(wavF, "hb")
     end
 
     YY, MM, DD, HH = ncread(wavF, "Y"), ncread(wavF, "M"), ncread(wavF, "D"), ncread(wavF, "h")
