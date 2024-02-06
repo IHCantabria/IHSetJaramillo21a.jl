@@ -76,7 +76,8 @@ function cal_Jaramillo21a()
         println("Breaking waves by linear theory...")
         Hb, θ_b, depthb = BreakingPropagation(Hs, Tp, θ_w, auxAng, auxDepth, "spectral")
     elseif brk == 2
-        Hb, Tp, Hs, depthb = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Hs")
+        Hb, Tp, Hs = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Hs")
+        θ_b = ncread(wavF, "Dir")
         depthb .= zeros(length(Hb)) .+ depth
     else
         Hb, θ_b, Hs, depthb = ncread(wavF, "Hb"), ncread(wavF, "Tp"), ncread(wavF, "Hs"), ncread(wavF, "hb")
