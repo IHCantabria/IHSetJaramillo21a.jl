@@ -160,9 +160,9 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000,
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_4r; 
@@ -174,9 +174,9 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000,
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_4r; 
@@ -187,9 +187,9 @@ function cal_Jaramillo21a()
                             MaxSteps = 500000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000)
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000)
         end
 
         objr = best_fitness(resr)
@@ -334,9 +334,9 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000,
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_5r; 
@@ -348,9 +348,9 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000,
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_5r; 
@@ -361,9 +361,9 @@ function cal_Jaramillo21a()
                             MaxSteps = 500000,
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            ϵ=0.2,
-                            τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 100000)
+                            # ϵ=0.05,
+                            # τ = 0.1,
+                            MaxStepsWithoutEpsProgress = 1000000)
         end
 
         objr = best_fitness(resr)
