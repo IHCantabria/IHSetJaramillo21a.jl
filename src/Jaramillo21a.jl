@@ -22,9 +22,9 @@ function Jaramillo21a(P, θ,dt, a, b, Lcw, Lccw, α0)
 
     for i in eachindex(P[2:end])
         if α[i] < αeq[i+1]
-            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lcw * (P[i+1])*dt*3600)) + αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lcw * (P[i+1])*dt)) + αeq[i+1]
         else
-            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lccw * (P[i+1])*dt*3600)) + αeq[i+1]
+            α[i+1] = ((α[i]-αeq[i+1]).*exp(-1. * Lccw * (P[i+1])*dt)) + αeq[i+1]
         end
     end
     
@@ -64,23 +64,7 @@ function cal_Jaramillo21a()
 
     MetObj = ncread(configF, "MetObj")[1]
 
-    if brk == 1
-        
-        Hs, Tp, θ_w = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Dir")
-
-        auxAng, auxDepth = similar(Hs), similar(Hs)
-        auxAng .= angBati
-        auxDepth .= depth
-
-        println("Breaking waves by linear theory...")
-        Hb, θ_b, depthb = BreakingPropagation(Hs, Tp, θ_w, auxAng, auxDepth, "spectral")
-    elseif brk == 2
-        Hb, Tp, Hs = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Hs")
-        θ_b = ncread(wavF, "Dir")
-        depthb = zeros(length(Hb)) .+ depth
-    else
-        Hb, θ_b, Hs, depthb = ncread(wavF, "Hb"), ncread(wavF, "Tp"), ncread(wavF, "Hs"), ncread(wavF, "hb")
-    end
+    Hs, Tp, θ_w = ncread(wavF, "Hs"), ncread(wavF, "Tp"), ncread(wavF, "Dir")
 
     YY, MM, DD, HH = ncread(wavF, "Y"), ncread(wavF, "M"), ncread(wavF, "D"), ncread(wavF, "h")
 
@@ -97,7 +81,7 @@ function cal_Jaramillo21a()
 
     ii =  t_wav .<= t_obs[end] .&& t_wav .>= t_obs[1]
 
-    t_wav, hb, tp, hs, depthb, θ_b = t_wav[ii], Hb[ii], Tp[ii], Hs[ii], depthb[ii], θ_b[ii]
+    t_wav, hb, tp, hs, θ_b = t_wav[ii], Hs[ii], Tp[ii], Hs[ii], θ_w[ii]
 
     idx_obs = zeros(length(t_obs))
 
@@ -147,48 +131,48 @@ function cal_Jaramillo21a()
         
         boundsr = [(-1e+2, 1e+2),
                    (-1e+3, 1e+3),
-                   (log(1e-12), log(1e-6)),
-                   (log(1e-12), log(1e-6))]
+                   (log(1e-9), log(1e-3)),
+                   (log(1e-9), log(1e-3))]
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
             resr = bboptimize(Calibra_4r; 
                             # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 10000000,
+                            ϵ=0.1,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_4r; 
                             # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 10000000,
+                            ϵ=0.1,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_4r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
+                            ϵ=0.1,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
@@ -201,7 +185,6 @@ function cal_Jaramillo21a()
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
         aRMSE = sqrt(mean((Ysl .- Y_obs).^2))
         aMSS = 1 - sum((Ysl .- Y_obs).^2)/length(Ysl)/(var(Ysl)+var(Y_obs)+(mean(Ysl)-mean(Y_obs))^2)
-
 
         println("\n\n****************Finished****************\n\n")
 
@@ -320,8 +303,8 @@ function cal_Jaramillo21a()
 
         boundsr = [(-1e+2, 1e+2),
                    (-1e+3, 1e+3),
-                   (log(1e-12), log(1e-6)),
-                   (log(1e-12), log(1e-6)),
+                   (log(1e-9), log(1e-3)),
+                   (log(1e-9), log(1e-3)),
                    (0.25*minimum(Y_obs), 2*maximum(Y_obs))]
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
@@ -329,40 +312,40 @@ function cal_Jaramillo21a()
                             # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 10000000,
+                            ϵ=0.1,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_5r; 
                             # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
-                            MaxStepsWithoutEpsProgress = 10000000,
+                            ϵ=0.1,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_5r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 500000,
-                            MaxSteps = 5000000,
-                            # FitnessTolerance = 1e-6,
+                            PopulationSize = 50000,
+                            MaxSteps = 500000,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
-                            # ϵ=0.05,
-                            # τ = 0.1,
+                            ϵ=0.1,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
