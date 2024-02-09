@@ -136,7 +136,6 @@ function cal_Jaramillo21a()
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
             resr = bboptimize(Calibra_4r; 
-                            # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 4,
                             PopulationSize = 50000,
@@ -145,12 +144,11 @@ function cal_Jaramillo21a()
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_4r; 
-                            # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 4,
                             PopulationSize = 50000,
@@ -159,7 +157,7 @@ function cal_Jaramillo21a()
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -172,7 +170,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
@@ -309,7 +307,6 @@ function cal_Jaramillo21a()
 
         if MetObj == "Double" || MetObj == "Double2" || MetObj == "Double3"
             resr = bboptimize(Calibra_5r; 
-                            # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 5,
                             PopulationSize = 50000,
@@ -318,12 +315,11 @@ function cal_Jaramillo21a()
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_5r; 
-                            # Method = :simultaneous_perturbation_stochastic_approximation,
                             SearchRange = boundsr,
                             NumDimensions = 5,
                             PopulationSize = 50000,
@@ -332,7 +328,7 @@ function cal_Jaramillo21a()
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -345,7 +341,7 @@ function cal_Jaramillo21a()
                             FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.01,
+                            τ = 0.015,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
