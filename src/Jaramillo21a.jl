@@ -348,7 +348,7 @@ function cal_Jaramillo21a()
         objr = best_fitness(resr)
         popr = best_candidate(resr)
 
-        Ymdr = Jaramillo21(P, θ_b, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), popr[5])
+        Ymdr = Jaramillo21a(P, θ_b, dt, popr[1], popr[2], exp(popr[3]), exp(popr[4]), popr[5])
 
         Ysl = Ymdr[idx_obs]
         aRP = sum((Ysl.-mean(Ysl)).*(Y_obs .- mean(Y_obs)))/(std(Ysl)*std(Y_obs)*length(Ysl))
