@@ -437,7 +437,7 @@ function cal_Jaramillo21a()
                     "len", 1,
                     atts = RP_atts)
         ncwrite([aRP], output, "RP")
-        nccreate(output, "RMS",
+        nccreate(output, "RMSE",
                     "len", 1,
                     atts = RMSE_atts)
         ncwrite([aRMSE], output, "RMSE")
