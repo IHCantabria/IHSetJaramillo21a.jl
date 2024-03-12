@@ -652,22 +652,38 @@ function calVal_Jaramillo21a()
         monthv_atts = Dict("long_name" => "Month Validation")
         dayv_atts = Dict("long_name" => "Day Validation")
         hourv_atts = Dict("long_name" => "Hour Validation")
-        nccreate(output, "year_v",
+        nccreate(output, "year_vi",
                     "len", 1,
                     atts = yearv_atts)
-        ncwrite([YYs], output, "year_v")
-        nccreate(output, "month_v",
+        ncwrite([YYsi], output, "year_vi")
+        nccreate(output, "month_vi",
                     "len", 1,
-                    atts = monthv_atts)
-        ncwrite([MMs], output, "month_v")
-        nccreate(output, "day_v",
+                    atts = yearv_atts)
+        ncwrite([MMsi], output, "month_vi")
+        nccreate(output, "day_vi",
                     "len", 1,
                     atts = dayv_atts)
-        ncwrite([DDs], output, "day_v")
-        nccreate(output, "hour_v",
+        ncwrite([DDsi], output, "day_vi")
+        nccreate(output, "hour_vi",
                     "len", 1,
                     atts = hourv_atts)
-        ncwrite([HHs], output, "hour_v")
+        ncwrite([HHsi], output, "hour_vi")
+        nccreate(output, "year_vf",
+                    "len", 1,
+                    atts = yearv_atts)
+        ncwrite([YYsf], output, "year_vf")
+        nccreate(output, "month_vf",
+                    "len", 1,
+                    atts = yearv_atts)
+        ncwrite([MMsf], output, "month_vf")
+        nccreate(output, "day_vf",
+                    "len", 1,
+                    atts = dayv_atts)
+        ncwrite([DDsf], output, "day_vf")
+        nccreate(output, "hour_vf",
+                    "len", 1,
+                    atts = hourv_atts)
+        ncwrite([HHsf], output, "hour_vf")
 
         Y_atts = Dict("units" => "degrees",
             "long_name" => "Shoreline orientation",
@@ -870,22 +886,38 @@ function calVal_Jaramillo21a()
         monthv_atts = Dict("long_name" => "Month Validation")
         dayv_atts = Dict("long_name" => "Day Validation")
         hourv_atts = Dict("long_name" => "Hour Validation")
-        nccreate(output, "year_v",
+        nccreate(output, "year_vi",
                     "len", 1,
                     atts = yearv_atts)
-        ncwrite([YYs], output, "year_v")
-        nccreate(output, "month_v",
+        ncwrite([YYsi], output, "year_vi")
+        nccreate(output, "month_vi",
                     "len", 1,
-                    atts = monthv_atts)
-        ncwrite([MMs], output, "month_v")
-        nccreate(output, "day_v",
+                    atts = yearv_atts)
+        ncwrite([MMsi], output, "month_vi")
+        nccreate(output, "day_vi",
                     "len", 1,
                     atts = dayv_atts)
-        ncwrite([DDs], output, "day_v")
-        nccreate(output, "hour_v",
+        ncwrite([DDsi], output, "day_vi")
+        nccreate(output, "hour_vi",
                     "len", 1,
                     atts = hourv_atts)
-        ncwrite([HHs], output, "hour_v")
+        ncwrite([HHsi], output, "hour_vi")
+        nccreate(output, "year_vf",
+                    "len", 1,
+                    atts = yearv_atts)
+        ncwrite([YYsf], output, "year_vf")
+        nccreate(output, "month_vf",
+                    "len", 1,
+                    atts = yearv_atts)
+        ncwrite([MMsf], output, "month_vf")
+        nccreate(output, "day_vf",
+                    "len", 1,
+                    atts = dayv_atts)
+        ncwrite([DDsf], output, "day_vf")
+        nccreate(output, "hour_vf",
+                    "len", 1,
+                    atts = hourv_atts)
+        ncwrite([HHsf], output, "hour_vf")
 
         Y_atts = Dict("units" => "degrees",
             "long_name" => "Shoreline orientation",
