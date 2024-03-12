@@ -650,19 +650,19 @@ function calVal_Jaramillo21a()
         dayv_atts = Dict("long_name" => "Day Validation")
         hourv_atts = Dict("long_name" => "Hour Validation")
         nccreate(output, "year_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = yearv_atts)
         ncwrite([YYs], output, "year_v")
         nccreate(output, "month_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = monthv_atts)
         ncwrite([MMs], output, "month_v")
         nccreate(output, "day_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = dayv_atts)
         ncwrite([DDs], output, "day_v")
         nccreate(output, "hour_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = hourv_atts)
         ncwrite([HHs], output, "hour_v")
 
@@ -868,19 +868,19 @@ function calVal_Jaramillo21a()
         dayv_atts = Dict("long_name" => "Day Validation")
         hourv_atts = Dict("long_name" => "Hour Validation")
         nccreate(output, "year_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = yearv_atts)
         ncwrite([YYs], output, "year_v")
         nccreate(output, "month_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = monthv_atts)
         ncwrite([MMs], output, "month_v")
         nccreate(output, "day_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = dayv_atts)
         ncwrite([DDs], output, "day_v")
         nccreate(output, "hour_v",
-                    "dim", 1,
+                    "len", 1,
                     atts = hourv_atts)
         ncwrite([HHs], output, "hour_v")
 
