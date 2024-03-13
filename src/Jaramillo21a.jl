@@ -140,11 +140,11 @@ function cal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -153,11 +153,11 @@ function cal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -167,10 +167,10 @@ function cal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
@@ -311,11 +311,11 @@ function cal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -324,11 +324,11 @@ function cal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -338,10 +338,10 @@ function cal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
@@ -575,11 +575,11 @@ function calVal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -588,11 +588,11 @@ function calVal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -602,10 +602,10 @@ function calVal_Jaramillo21a()
                             NumDimensions = 4,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
@@ -807,11 +807,11 @@ function calVal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
@@ -820,11 +820,11 @@ function calVal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000,
                             Method=:borg_moea)
         else
@@ -834,10 +834,10 @@ function calVal_Jaramillo21a()
                             NumDimensions = 5,
                             PopulationSize = 50000,
                             MaxSteps = 500000,
-                            FitnessTolerance = 1e-12,
+                            FitnessTolerance = 1e-6,
                             TraceMode=:compact,
                             ϵ=0.1,
-                            τ = 0.015,
+                            τ = 0.05,
                             MaxStepsWithoutEpsProgress = 1000000)
         end
 
