@@ -138,40 +138,40 @@ function cal_Jaramillo21a()
             resr = bboptimize(Calibra_4r; 
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_4r; 
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_4r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000)
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000)
         end
 
         objr = best_fitness(resr)
@@ -309,40 +309,40 @@ function cal_Jaramillo21a()
             resr = bboptimize(Calibra_5r; 
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_5r; 
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_5r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000)
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000)
         end
 
         objr = best_fitness(resr)
@@ -573,40 +573,40 @@ function calVal_Jaramillo21a()
             resr = bboptimize(Calibra_4r; 
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_4r; 
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_4r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 4,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000)
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000)
         end
 
         objr = best_fitness(resr)
@@ -805,40 +805,40 @@ function calVal_Jaramillo21a()
             resr = bboptimize(Calibra_5r; 
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{2}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         elseif MetObj == "Triple"
             resr = bboptimize(Calibra_5r; 
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             FitnessScheme=ParetoFitnessScheme{3}(is_minimizing=true),
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000,
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000,
                             Method=:borg_moea)
         else
             resr = bboptimize(Calibra_5r; 
                             Method = :adaptive_de_rand_1_bin,
                             SearchRange = boundsr,
                             NumDimensions = 5,
-                            PopulationSize = 50000,
-                            MaxSteps = 500000,
+                            PopulationSize = 500000,
+                            MaxSteps = 5000000,
                             FitnessTolerance = 1e-12,
                             TraceMode=:compact,
                             ϵ=0.05,
-                            τ = 0.04,
-                            MaxStepsWithoutEpsProgress = 1000000)
+                            τ = 0.05,
+                            MaxStepsWithoutEpsProgress = 10000000)
         end
 
         objr = best_fitness(resr)
